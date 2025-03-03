@@ -1,0 +1,23 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        int candidate = 0, count = 0;
+
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+            count += (num == candidate) ? 1 : -1;
+        }
+        
+        return candidate;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int[] nums1 = {3, 2, 3};
+        int[] nums2 = {2, 2, 1, 1, 1, 2, 2};
+
+        System.out.println(sol.majorityElement(nums1)); 
+        System.out.println(sol.majorityElement(nums2)); 
+    }
+}
