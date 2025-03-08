@@ -1,0 +1,21 @@
+import java.util.Arrays;
+
+class Solution {
+    public int[] transformArray(int[] nums) {
+        
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = (nums[i] % 2 == 0) ? 0 : 1;
+        }
+
+        Arrays.sort(nums);
+
+        return nums;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int[] nums = {4, 3, 2, 1};
+        int[] result = sol.transformArray(nums);
+        System.out.println(Arrays.toString(result));
+    }
+}
