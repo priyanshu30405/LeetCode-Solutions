@@ -1,0 +1,36 @@
+import java.util.HashSet;
+
+class Solution {
+    public int countConsistentStrings(String allowed, String[] words) {
+        HashSet<Character> allowedSet = new HashSet<>();
+        for (char ch : allowed.toCharArray()) {
+            allowedSet.add(ch);
+        }
+
+        int count = 0;
+        for (String word : words) {
+            boolean isConsistent = true;
+            for (char ch : word.toCharArray()) {
+                if (!allowedSet.contains(ch)) {
+                    isConsistent = false;
+                    break;
+                }
+            }
+            if (isConsistent) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    public static void main(String[] args) {
+        Solution obj = new Solution();
+        String allowed1 = "ab";
+        String[] words1 = {"ad", "bd", "aaab", "baa", "badab"};
+        System.out.println(obj.countConsistentStrings(allowed1, words1)); // Output: 2
+
+        String allowed2 = "abc";
+        String[] words2 = {"a", "b", "c", "ab", "ac", "bc", "abc"};
+        System.out.println(obj.countConsistentStrings(allowed2, words2)); // Output: 7
+    }
+}
