@@ -1,0 +1,23 @@
+class Solution {
+    public String truncateSentence(String s, int k) {
+        int ind = index(s,k);
+        if(ind==0){
+            return s;
+        }
+        return s.substring(0,ind);
+    }
+    private int index(String s, int k){
+        int index =0;
+        int count = 0;
+        for(int i=0; i<s.length(); i++){
+            if(s.charAt(i)==' '){
+                count++;
+            }
+            if(count==k){
+                index = i;
+                return index;
+            }
+        }
+        return index;
+    }
+}
