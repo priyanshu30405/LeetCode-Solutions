@@ -1,0 +1,8 @@
+class Solution {
+    public double[] convertTemperature(double c) {
+        double ans[] = new double[2];
+        ans[0] = c + 273.15;
+        ans[1] = c*9/5 + 32;
+        return ans;
+    }
+}
