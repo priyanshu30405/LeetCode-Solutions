@@ -1,0 +1,32 @@
+class Solution {
+    public int garbageCollection(String[] garbage, int[] travel) {
+        int n = garbage.length;
+        int totalTime = 0;
+
+        // Count total pickup time (1 min per garbage unit)
+        for (String g : garbage) {
+            totalTime += g.length();
+        }
+
+        // Prefix sum of travel time
+        int[] prefix = new int[n];
+        for (int i = 1; i < n; i++) {
+            prefix[i] = prefix[i - 1] + travel[i - 1];
+        }
+
+        // Find last index where G, P, or M appear
+        int lastG = 0, lastP = 0, lastM = 0;
+        for (int i = 0; i < n; i++) {
+            if (garbage[i].contains("G")) lastG = i;
+            if (garbage[i].contains("P")) lastP = i;
+            if (garbage[i].contains("M")) lastM = i;
+        }
+
+        // Add required travel time for each garbage type
+        totalTime += prefix[lastG];
+        totalTime += prefix[lastP];
+        totalTime += prefix[lastM];
+
+        return totalTime;
+    }
+}
