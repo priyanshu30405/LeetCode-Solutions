@@ -1,0 +1,24 @@
+class Solution {
+    public int[] shortestToChar(String s, char c) {
+        int n =s.length();
+        int[]answer=new int[n];
+        List<Integer>positions=new ArrayList<>();
+
+        for(int i=0;i<n;i++){
+            if(s.charAt(i)==c){
+                positions.add(i);
+            }
+        }
+        for(int i=0;i<n;i++){
+            int minDistance=Integer.MAX_VALUE;
+            for(int pos:positions){
+                int distance =Math.abs(i-pos);
+                if(distance<minDistance){
+                    minDistance=distance;
+                }
+            }
+            answer[i]=minDistance;
+        }
+        return answer;
+    }
+}
